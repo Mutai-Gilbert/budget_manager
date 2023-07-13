@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/new'
   get 'home/index'
   get 'splash/index'
   devise_for :users
