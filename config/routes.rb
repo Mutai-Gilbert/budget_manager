@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'transactions/new'
   get 'categories/new'
   get 'home/index'
   get 'splash/index'
