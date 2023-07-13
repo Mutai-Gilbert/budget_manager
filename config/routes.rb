@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  get 'transactions/new'
-  get 'categories/new'
-  get 'home/index'
-  get 'splash/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :splash, only: [:index]
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :home, only: [:index] do
+    resources :categories, only: [:new, :create]
+  end
+  resources :transactions, only: [:index, :new, :create]
+  resources :categories, only: [] do
+    resources :transactions, only: [:index, :new, :create]
+  end
 end
