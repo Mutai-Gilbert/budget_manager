@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-  
   def new
     @category = current_user.categories.find(params[:category_id])
     @transaction = Transaction.new
@@ -19,6 +18,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:name, :amount)
+    params.require(:transaction).permit(:name, :amount, category_ids: [])
   end
 end
