@@ -1,0 +1,23 @@
+<% content_for :back_path, root_path %>
+<% content_for :page_name, "CATEGORIES" %>
+<% content_for :nav_button do %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+<% end %>
+
+<% if @groups.present? %>
+  <ul class="list-group">
+    <% @groups.each do |category| %>
+      <%= link_to category do %>
+        <li class="mb-3">
+          <%= render "shared/category", category: category %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-center text-gray-500 text-lg font-bold my-5">No categories found.</p>
+<% end %>
+
+<div class="flex justify-center mt-5">
+  <%= button_to "Add Category", new_category_path, method: :get, class: "btn btn-style btn-lg bg-blue-500 text-white px-4 py-2 rounded" %>
+</div>
