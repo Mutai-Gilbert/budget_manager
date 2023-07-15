@@ -1,0 +1,9 @@
+<div class="gap-4 border border-2 rounded-2 p-3 mb-3 w-full">
+  <div class="h-10">
+    <%= image_tag category.icon, alt: category.name, class: 'img-fluid', style: "height: 40px" %>
+  </div>
+  <div class="flex justify-between flex-grow">
+  <%= link_to category.name, category_transaction_entries_path(category), class: 'nav-link' %>
+  <span class="font-semibold">$<%= category.transaction_entries.sum(:amount) %></span>
+  </div>
+</div>

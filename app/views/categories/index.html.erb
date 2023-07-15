@@ -4,12 +4,14 @@
   <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
 <% end %>
 
-<% if @groups.present? %>
-  <ul class="list-group">
-    <% @groups.each do |category| %>
+<div class="justify-center mx-auto">
+<div class="mt-5 mb-3">
+<% if @categories.present? %>
+  <ul class="mt-4">
+    <% @categories.each do |category| %>
       <%= link_to category do %>
-        <li class="mb-3">
-          <%= render "shared/category", category: category %>
+        <li class="mb-3 p-4 bg-white rounded shadow-md">
+          <%= render "/shared/category", category: category %>
         </li>
       <% end %>
     <% end %>
@@ -17,7 +19,9 @@
 <% else %>
   <p class="text-center text-gray-500 text-lg font-bold my-5">No categories found.</p>
 <% end %>
+</div>
 
-<div class="flex justify-center mt-5">
+<div class="mt-5">
   <%= button_to "Add Category", new_category_path, method: :get, class: "btn btn-style btn-lg bg-blue-500 text-white px-4 py-2 rounded" %>
+</div>
 </div>

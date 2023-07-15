@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :splash, only: [:index]
 
   resources :categories, only: [:index, :show, :new, :create] do
-    resources :transactions, only: [:new, :create]
+    resources :transaction_entries, only: [:new, :create]
   end
 end

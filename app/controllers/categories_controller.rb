@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
   def index
     @categories = current_user.categories
+    @transaction_entry_form_data = params[:transaction_entry_form_data]
   end
 
   def show
-    @category = current_user.categories.find(params[:id])
-    @transactions = @category.transactions.order(created_at: :desc)
+    @category = Category.find(params[:id])
+    @transaction_entries = @category.transaction_entries
   end
 
   def new
@@ -13,7 +14,9 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.new(category_params)
+    @category = Category.new(category_params)
+    @category.user = current_user
+
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
