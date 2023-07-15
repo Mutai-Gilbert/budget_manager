@@ -1,0 +1,28 @@
+<% content_for :page_name, "TRANSACTIONS" %>
+<% content_for :nav_button do %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+<% end %>
+
+<br>
+<div class="text-center">
+  <div class="category-image">
+    <%= image_tag @category.icon, alt: @category.name, class: "img-fluid" %>
+  </div>
+  <h2 class="text-3xl font-bold mb-8">Transaction Entries</h2>
+  <div>
+    <h1 class="text-2xl font-bold mb-4"><%= @category.name %> Transactions</h1>
+    <p class="text-lg mb-6">Total Amount: $<%= @total_sum %></p>
+
+    <% @transaction_entries.each do |transaction| %>
+      <div class="bg-white">
+        <h3 class="text-xl font-bold mb-2"><%= transaction.name %></h3>
+        <p class="text-lg">Amount: $<%= transaction.amount %></p>
+        <hr class="my-4">
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <%= link_to 'Add a New Transaction', new_category_transaction_entry_path(@category), class: "bg-blue-500 text-white font-bold px-2 py-2 w-full border-2 border-white" %>
+  </div>
+</div>

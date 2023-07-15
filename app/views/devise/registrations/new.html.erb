@@ -1,24 +1,28 @@
+<% content_for :back_path, root_path %>
+<% content_for :nav_button do %>
+  <%= button_tag "Sign Up", class: "text-white" %>
+<% end %>
+
 <div class="container mx-auto px-4">
   <h2 class="text-2xl font-bold mb-4">Register</h2>
-  <% content_for :back_path, root_path %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "my-4" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="mb-4">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "w-full p-2 border border-gray-300 rounded" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "p-2 border border-gray-300 rounded" %>
     </div>
 
     <div class="mb-4">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "w-full p-2 border border-gray-300 rounded" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "p-2 border border-gray-300 rounded" %>
     </div>
 
     <div class="mb-4">
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "w-full p-2 border border-gray-300 rounded" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: " p-2 border border-gray-300 rounded" %>
     </div>
 
     <div class="mb-4">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "w-full p-2 border border-gray-300 rounded" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "p-2 border border-gray-300 rounded" %>
     </div>
 
     <div>

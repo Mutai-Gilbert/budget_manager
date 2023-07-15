@@ -1,27 +1,22 @@
-<% content_for :back_path, root_path %>
-<% content_for :page_name, "CATEGORIES" %>
 <% content_for :nav_button do %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+  <%= button_tag "Categories", redirect_to: categories_path, class: "text-white px-4 py-2 rounded mt-0" %>
 <% end %>
 
-<div class="justify-center mx-auto">
-<div class="mt-5 mb-3">
-<% if @categories.present? %>
-  <ul class="mt-4">
-    <% @categories.each do |category| %>
-      <%= link_to category do %>
-        <li class="mb-3 p-4 bg-white rounded shadow-md">
-          <%= render "/shared/category", category: category %>
-        </li>
+<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center shadow-lg rounded-lg bg-gray-100">
+  <% if @categories.present? %>
+      <% @categories.each do |category| %>
+        <%= link_to category do %>
+          <div class="container ">
+            <%= render "/shared/category", category: category %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-<% else %>
-  <p class="text-center text-gray-500 text-lg font-bold my-5">No categories found.</p>
-<% end %>
+  <% else %>
+    <h1 class="flex justify-center text-3xl font-bold">No categories found.</h1>
+  <% end %>
 </div>
 
-<div class="mt-5">
-  <%= button_to "Add Category", new_category_path, method: :get, class: "btn btn-style btn-lg bg-blue-500 text-white px-4 py-2 rounded" %>
-</div>
+
+<div>
+<%= button_to "Add Category", new_category_path, method: :get, class: "bg-blue-500  text-white font-bold px-2 py-2 w-full border-red-700"%>
 </div>

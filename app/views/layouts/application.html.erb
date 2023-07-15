@@ -9,9 +9,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen bg-gray-100">
-    <main class="container mx-auto mt-28 px-5">
+  <body class="bg-gray-100">
+    <div>
+    <br>
+      <%= render 'shared/navbar' %>
+    <br>
       <%= yield %>
-    </main>
+    </div>
   </body>
 </html>
