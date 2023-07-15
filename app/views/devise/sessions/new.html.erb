@@ -1,4 +1,4 @@
-<div class="px-4 py-8 mb-8 mt-8">
+<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center">
   <% content_for :back_path, root_path %>
   <% content_for :page_name, "LOGIN" %>
 
@@ -6,20 +6,22 @@
     <%= button_tag "Log in", redirect_to: root_path,class: "nav-link text-white flex justify-center align-items-center" %>
   <% end %>
 
-  <div class="justify-center mt-5 space-y-4">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: "new_user", class: "my-4" }) do |f| %>
-      <div class="mb-4">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block rounded-md border-gray-300 px-3 py-2", placeholder: "Email" %>
-      </div>
+      <div class="justify-center mt-5 space-y-4">
+        <div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block rounded-md border-gray-300 px-3 py-2", placeholder: "Email" %>
+        </div>
 
-      <div class="mb-4">
-        <%= f.password_field :password, autocomplete: "current-password", class:  "block rounded-md border-gray-300 px-3 py-2", placeholder: "Password" %>
-      </div>
+        <div>
+          <%= f.password_field :password, autocomplete: "current-password", class:  "block rounded-md border-gray-300 px-3 py-2", placeholder: "Password" %>
+        </div>
 
-      <div class="mb-4">
-        <%= f.submit "Log in", class: "bg-blue-500 text-white font-bold px-4 py-2 rounded-md" %>
+        <div>
+          <%= f.submit "Log in", class: "bg-blue-500 text-white font-bold px-4 py-2 rounded-md" %>
+        </div>
+        <div class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
-  </div>
     <% end %>
-    <%= render "devise/shared/links" %>
 </div>

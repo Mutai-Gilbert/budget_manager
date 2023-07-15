@@ -1,32 +1,35 @@
-<% content_for :back_path, root_path %>
-<% content_for :nav_button do %>
+<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center">
+  <% content_for :back_path, root_path %>
+  <% content_for :page_name, "REGISTRATION" %>
+  <% content_for :nav_button do %>
   <%= button_tag "Sign Up", class: "text-white" %>
-<% end %>
+  <% end %>
 
-<div class="container mx-auto px-4">
+  <div class="container mx-auto px-4">
   <h2 class="text-2xl font-bold mb-4">Register</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "my-4" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="justify-center mt-5 space-y-4">
+      <div>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "block  rounded-md border-gray-300 px-3 py-2" %>
+      </div>
 
-    <div class="mb-4">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "p-2 border border-gray-300 rounded" %>
-    </div>
+      <div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "block  rounded-md border-gray-300 px-3 py-2" %>
+      </div>
 
-    <div class="mb-4">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "p-2 border border-gray-300 rounded" %>
-    </div>
+      <div>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "block  rounded-md border-gray-300 px-3 py-2" %>
+      </div>
 
-    <div class="mb-4">
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: " p-2 border border-gray-300 rounded" %>
-    </div>
+      <div>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "block  rounded-md border-gray-300 px-3 py-2" %>
+      </div>
 
-    <div class="mb-4">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "p-2 border border-gray-300 rounded" %>
-    </div>
-
-    <div>
-      <%= f.submit "Sign up", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+      <div>
+        <%= f.submit "Sign up", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+      </div>
     </div>
   <% end %>
 

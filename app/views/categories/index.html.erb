@@ -2,11 +2,11 @@
   <%= button_tag "Categories", redirect_to: categories_path, class: "text-white px-4 py-2 rounded mt-0" %>
 <% end %>
 
-<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center shadow-lg rounded-lg bg-gray-100">
+<div class="mx-auto px-4 shadow-lg rounded-lg bg-gray-100">
   <% if @categories.present? %>
       <% @categories.each do |category| %>
         <%= link_to category do %>
-          <div class="container ">
+          <div class="justify-center mt-5 space-y-4">
             <%= render "/shared/category", category: category %>
           </div>
         <% end %>
