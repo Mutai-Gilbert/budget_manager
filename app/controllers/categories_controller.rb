@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = current_user.categories
-    @transaction_entry_form_data = params[:transaction_entry_form_data]
+    @categories = Category.all
   end
 
   def show

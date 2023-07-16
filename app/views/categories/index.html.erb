@@ -1,22 +1,31 @@
-<% content_for :nav_button do %>
-  <%= button_tag "Categories", redirect_to: categories_path, class: "text-white px-4 py-2 rounded mt-0" %>
-<% end %>
-
-<div class="mx-auto px-4 shadow-lg rounded-lg bg-gray-100">
-  <% if @categories.present? %>
-      <% @categories.each do |category| %>
-        <%= link_to category do %>
-          <div class="justify-center mt-5 space-y-4">
-            <%= render "/shared/category", category: category %>
-          </div>
-        <% end %>
-      <% end %>
-  <% else %>
-    <h1 class="flex justify-center text-3xl font-bold">No categories found.</h1>
-  <% end %>
-</div>
-
-
 <div>
-<%= button_to "Add Category", new_category_path, method: :get, class: "bg-blue-500  text-white font-bold px-2 py-2 w-full border-red-700"%>
+  <% content_for :nav_button do %>
+    <%= button_to categories_path, method: :get, class: "text-white px-4 py-2 rounded mt-0" do %>
+      Categories
+    <% end %>
+  <% end %>
+
+  <div class="mt-5 space-y-4">
+    <% if @categories.present? %>
+      <% @categories.each do |category| %>
+        <div class="bg-white shadow-lg rounded-lg flex items-center px-2 py-2">
+          <div class="w-1/2 h-20">
+            <%= image_tag category.icon, alt: category.name %>
+          </div>
+          <div class="flex flex-row justify-between items-center w-full">
+            <%= link_to category.name, category_transaction_entries_path(category), class: "nav-link justify-start" %>
+            <span class="justify-end">$<%= category.transaction_entries.sum(:amount) %></span>
+          </div> 
+        </div>
+      <% end %>
+    <% else %>
+      <h1 class="flex justify-center text-3xl font-bold">No categories found.</h1>
+    <% end %>
+  </div>
 </div>
+
+<% content_for :footer do %>
+  <div class="bg-lime-400">
+    <%= button_to "Add Category", new_category_path, method: :get, class: "px-2 py-2 text-white font-bold w-full" %>
+  </div>
+<% end %>

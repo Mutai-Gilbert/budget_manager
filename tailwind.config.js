@@ -2,8 +2,11 @@
 module.exports = {
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        footer: '#60b524',
+      },
+    },
   },
   plugins: [],
 }
-

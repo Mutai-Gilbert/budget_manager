@@ -1,11 +1,5 @@
 <div>
-  <div>
-    <%= image_tag category.icon, alt: category.name, class: "" %>
-  </div>
-  <div>
-    <%= link_to category.name, category_transaction_entries_path(category), class: 'nav-link' %>
-  </div>
-  <div>
-    <span class="font-bold">$<%= category.transaction_entries.sum(:amount) %></span>
-  </div>
+  <%= image_tag category.icon, alt: category.name, class: "" %>
+  <%= link_to category.name, category_transaction_entries_path(category), class: 'nav-link' %>
+  <span class="font-bold">$<%= category.transaction_entries.sum(:amount) %></span>
 </div>

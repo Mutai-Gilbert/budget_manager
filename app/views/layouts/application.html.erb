@@ -9,12 +9,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-100">
+  <body class="min-h-screen bg-gray-100">
     <div>
-    <br>
       <%= render 'shared/navbar' %>
-    <br>
+    </div>
+    <div>
       <%= yield %>
+    </div>
+    <div>
+      <% if content_for?(:footer) %>
+        <%= yield :footer %>
+      <% end %>
     </div>
   </body>
 </html>
