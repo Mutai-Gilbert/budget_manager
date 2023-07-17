@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Categories', type: :request do
   include Devise::Test::IntegrationHelpers
-  
+
   before :each do
     @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
     sign_in @user

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Category/New", type: :system do
-  describe "category new page" do
+RSpec.describe 'Category/New', type: :system do
+  describe 'category new page' do
     before do
       @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
 

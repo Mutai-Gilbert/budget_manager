@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Categories/Index", type: :system do
-  describe "category index page" do
+RSpec.describe 'Categories/Index', type: :system do
+  describe 'category index page' do
     before do
       @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
       @category = Category.create!(name: 'test', icon: 'https://images.app.goo.gl/xb4zqArZJgZHrJFF6', user: @user)
@@ -13,7 +13,7 @@ RSpec.describe "Categories/Index", type: :system do
       click_button 'Log in'
     end
 
-    it "displays a list of categories" do
+    it 'displays a list of categories' do
       expect(page).to have_content('test')
       expect(page).to have_content('test2')
     end
@@ -35,5 +35,3 @@ RSpec.describe "Categories/Index", type: :system do
     end
   end
 end
-
-

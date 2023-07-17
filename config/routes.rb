@@ -4,9 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "splash#index"
-
+  
   resources :splash, only: [:index]
-  resources :transaction_entries
   resources :categories, only: [:index, :show, :new, :create] do
     resources :transaction_entries, only: [:index, :new, :create]
   end

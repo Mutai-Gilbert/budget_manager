@@ -4,7 +4,7 @@
   <%= button_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link text-white" %>
 <%end%>
 
-  <%= form_with model: @transaction_entries, class: "w-96" do |form| %>
+  <%= form_with model: [@category, @transaction_entry], method: :post do |form| %>
     <div class="justify-center mt-5 space-y-4">
       <div>
         <%= form.label :name, class: "block font-bold" %>

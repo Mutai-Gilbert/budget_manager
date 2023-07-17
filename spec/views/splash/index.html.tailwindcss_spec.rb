@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "splash/index", type: :view do
+RSpec.describe 'splash/index', type: :view do
   before do
     render
   end

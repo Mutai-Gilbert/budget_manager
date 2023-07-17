@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "categories/show", type: :view do
+RSpec.describe 'categories/show', type: :view do
   before do
     @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
     @category = Category.create!(name: 'test', icon: 'https://images.app.goo.gl/xb4zqArZJgZHrJFF6', user: @user)
