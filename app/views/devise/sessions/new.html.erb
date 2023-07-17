@@ -2,10 +2,6 @@
   <% content_for :back_path, root_path %>
   <% content_for :page_name, "LOGIN" %>
 
-  <% content_for :nav_button do %>
-    <%= button_tag "Log in", redirect_to: root_path,class: "nav-link text-white flex justify-center align-items-center" %>
-  <% end %>
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: "new_user", class: "my-4" }) do |f| %>
       <div class="justify-center mt-5 space-y-4">
         <div>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :categories, foreign_key: :user_id
-  has_many :transactions, foreign_key: :user_id
+  has_many :transaction_entries, foreign_key: :user_id
 
   validates :name, presence: true
 end

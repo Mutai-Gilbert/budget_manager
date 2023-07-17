@@ -30,11 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_052957) do
     t.index ["transaction_entry_id"], name: "index_categories_transaction_entries_on_transaction_entry_id"
   end
 
-  create_table "categories_transactions", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "transaction_id", null: false
-  end
-
   create_table "transaction_entries", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
@@ -42,15 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_052957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_transaction_entries_on_user_id"
-  end
-
-  create_table "transactions_entries", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.decimal "amount", default: "0.0"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_transactions_entries_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,5 +56,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_052957) do
   add_foreign_key "categories_transaction_entries", "categories"
   add_foreign_key "categories_transaction_entries", "transaction_entries"
   add_foreign_key "transaction_entries", "users"
-  add_foreign_key "transactions_entries", "users"
 end

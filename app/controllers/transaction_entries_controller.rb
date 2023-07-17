@@ -15,7 +15,7 @@ class TransactionEntriesController < ApplicationController
     @transaction_entry = @category.transaction_entries.build(transaction_entry_params)
     @transaction_entry.user = current_user
 
-    category_id = @category.id
+    category_id = params[:transaction_entry][:category_id]
 
     if category_id.present?
       category = Category.find(category_id)
@@ -25,7 +25,7 @@ class TransactionEntriesController < ApplicationController
     respond_to do |format|
       if @transaction_entry.save
         format.html do
-          redirect_to category_transaction_entries_path(@category),
+          redirect_to category_transaction_entries_path(category_id),
                       notice: 'Transaction entry was successfully created.'
         end
         format.json { render :show, status: :created, location: @transaction_entry }

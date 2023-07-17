@@ -17,14 +17,16 @@
       <div class="bg-white">
         <h3 class="text-xl font-bold"><%= transaction.name %></h3>
         <p class="text-lg">Amount: $<%= transaction.amount %></p>
-      <div class="text-lg"><%= transaction.created_at.strftime("%d %b %Y at %l:%M %P") %></div>
+        <div class="text-lg"><%= transaction.created_at.strftime("%d %b %Y at %l:%M %p") %></div>
       </div>
     <% end %>
   </div>
-
 </div>
+
 <% content_for :footer do %>
-  <div class="bg-lime-400">
-    <%= button_to "Add a New Transaction", new_category_path, method: :get, class: "px-2 py-2 text-white font-bold w-full" %>
+  <div class="bg-lime-400 fixed bottom-0 left-0 w-full px-2 py-2">
+    <div class="border border-white">
+      <%= button_to "Add a New Transaction", new_category_transaction_entry_path(@category), method: :get, class: "px-2 py-2 text-white font-bold w-full" %>
+    </div>
   </div>
 <% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root "splash#index"
 
   resources :splash, only: [:index]
-
+  resources :transaction_entries
   resources :categories, only: [:index, :show, :new, :create] do
     resources :transaction_entries, only: [:index, :new, :create]
   end
