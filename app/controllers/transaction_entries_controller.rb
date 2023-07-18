@@ -1,8 +1,6 @@
 class TransactionEntriesController < ApplicationController
   def index
     @category = current_user.categories.find(params[:category_id])
-    @transaction_entries = @category.transaction_entries
-    @total_sum = @transaction_entries.sum(:amount)
   end
 
   def new
@@ -13,6 +11,8 @@ class TransactionEntriesController < ApplicationController
   def create
     @transaction_entry = TransactionEntry.new(transaction_entry_params)
     @transaction_entry.user = current_user
+    @category = current_user.categories.find(params[:category_id])
+    @transaction_entry.categories << @category
 
     if @transaction_entry.save
       redirect_to category_transaction_entries_path, notice: 'Transaction entry was successfully created.'
