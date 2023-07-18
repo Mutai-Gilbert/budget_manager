@@ -1,0 +1,27 @@
+<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center">
+  <% content_for :page_name, "New Transaction Entry" %>
+  <% content_for :nav_button do %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+  <% end %>
+
+  <%= form_with model: ([@category, @transaction_entry]) do |form| %>
+    <div class="justify-center mt-5 space-y-4">
+      <div>
+        <%= form.label :name, class: "block font-bold" %>
+        <%= form.text_field :name, class: "block w-full rounded-md border-gray-300 px-3 py-2" %>
+      </div>
+
+      <div>
+        <%= form.label :amount, class: "block font-bold" %>
+        <%= form.text_field :amount, class: "block w-full rounded-md border-gray-300 px-3 py-2" %>
+      </div>
+      <% if @transaction_entry.errors.has_key?(:amount) %>
+        <p class="text-red-500"><%= @transaction_entry.errors[:amount].first %></p>
+      <% end %>
+
+      <div>
+        <%= form.submit "Create", class: "bg-blue-500 text-white font-bold px-4 py-2 rounded-md" %>
+      </div>
+    </div>
+  <% end %>
+</div>

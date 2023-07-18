@@ -1,0 +1,20 @@
+<% content_for :nav_bar, "navbar not required" %>
+<div class="max-w-md mx-auto">
+
+  <h2 class="text-3xl font-bold mb-4">Forgot your password?</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-4">
+      <%= f.label :email, class: "block font-bold" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full rounded-md border-gray-300 px-3 py-2" %>
+    </div>
+
+    <div class="mt-5">
+      <%= f.submit "Send me reset password instructions", class: "btn btn-style btn-lg bg-blue-500 text-white px-4 py-2 rounded-md" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

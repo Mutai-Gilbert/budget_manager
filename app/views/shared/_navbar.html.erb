@@ -1,0 +1,23 @@
+<% unless content_for?(:nav_bar) %>
+  <nav class="bg-blue-500 mt-0 px-2 py-2 flex justify-start items-center">
+    <div>
+      <% if content_for?(:page_name) %>
+        <%= link_to yield(:back_path), class: "bg-blue-500 text-white" do %>
+          <div>
+            <%= link_to '<--', categories_path, class: "text-white grid font-bold px-4" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if content_for?(:nav_button) %>
+        <ul class="flex justify-center font-bold">
+          <li class="nav-item">
+            <%= yield(:nav_button) %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+<% end %>

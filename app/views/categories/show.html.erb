@@ -1,0 +1,19 @@
+<% content_for :back_path, root_path %>
+<% content_for :page_name, "TRANSACTIONS" %>
+<% content_for :nav_button do %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+<% end %>
+
+<%= render "/shared/category", category: @category if @category.present? %>
+  <% @transaction_entries.each do |transaction| %>
+    <div class="flex flex-col justify-center space-between">
+    <div>
+      <h2 class="text-xl font-bold justify-start"><%= transaction.name %></h2>
+      <div class="text-xl font-bold justify-end">$<%= transaction.amount %></div>
+    </div>
+    </div>
+  <% end %>
+
+<div class="flex justify-center mt-5">
+  <%= button_to "Add Transaction", new_category_transaction_entry_path(@category), method: :get, class: "btn btn-style btn-lg mt-2 bg-blue-500 text-white px-4 py-2" %>
+</div>
