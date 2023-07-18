@@ -76,7 +76,7 @@
 
 ## 📺 Presentation <a name="presentation"></a>
 
-- [Link to video presentation]())
+- [Link to video presentation]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
