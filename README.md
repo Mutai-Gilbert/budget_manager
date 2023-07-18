@@ -70,13 +70,13 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo]()
+- [Live Demo](https://budget-manager-web-service.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📺 Presentation <a name="presentation"></a>
 
-- [Link to video presentation]()
+- [Link to video presentation](https://www.loom.com/share/593bd60006f54f75815aa30c615261d5?sid=6ebe9bbb-59df-4e30-9174-9dfefcaff86d)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
