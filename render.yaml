@@ -5,7 +5,7 @@ databases:
 
 services:
   - type: web
-    name: budget_manager_service
+    name: budget_manager_web_service
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
