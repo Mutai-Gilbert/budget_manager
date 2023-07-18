@@ -1,7 +1,7 @@
 databases:
   - name: budget_manager
-    databaseName: budget_manager_dvx5
-    user: budget_manager_dvx5_user
+    databaseName: budget_manager_0ggk
+    user: budget_manager_0ggk_user
 
 services:
   - type: web
