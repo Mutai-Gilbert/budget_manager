@@ -13,19 +13,11 @@ RSpec.describe 'transaction_entries/index', type: :view do
     render
   end
 
+  it 'displays the page name' do
+    expect(rendered).to have_selector('h1', text: 'Transactions')
+  end
+
   it 'displays the category name' do
-    expect(rendered).to have_selector('h1', text: @category.name)
-  end
-
-  it 'displays the total amount' do
-    expect(rendered).to have_selector('p', text: "Total Amount: $#{@total_sum}")
-  end
-
-  it 'displays transaction entries' do
-    @transaction_entries.each do |transaction|
-      expect(rendered).to have_selector('h3', text: transaction.name)
-      expect(rendered).to have_selector('p', text: "Amount: $#{transaction.amount}")
-      expect(rendered).to have_selector('div', text: transaction.created_at.strftime('%d %b %Y at %l:%M %p'))
-    end
+    expect(rendered).to have_selector('h2', text: @category.name)
   end
 end

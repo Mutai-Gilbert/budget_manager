@@ -20,6 +20,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Precompile Assets](#precompile-assets)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
   - [👥 Authors ](#-authors-)
@@ -122,6 +123,15 @@ To run the project, execute the following command:
   rails s
 ```
 
+### Precompile Assets
+In order to precompile all the assets before using them kindly use:
+
+```sh
+  rake assets:precompile
+```
+
+
+
 ### Run tests
 
 To run tests, run the following command:
@@ -129,10 +139,17 @@ To run tests, run the following command:
 ```sh
   bin/rails rspec spec
 ```
+Alternatively you can use;
+
+```sh
+  bundle exec rspec spec
+```
 
 ### Deployment
 
 You can deploy this project using:
+
+Render
 
 <!--
 Example:

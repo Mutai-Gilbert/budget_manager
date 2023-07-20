@@ -5,9 +5,9 @@
 
 <br>
 <div class="text-center">
-  <h2 class="text-3xl font-bold mb-8">Transactions</h2>
+  <h1 class="text-3xl font-bold mb-8">Transactions</h1>
   <div>
-    <h1 class="text-2xl font-bold mb-4"><%= @category.name %> Transactions</h1>
+    <h2 class="text-2xl font-bold mb-4"><%= @category.name %> Transactions</h2>
     <p class="text-lg mb-6">Total Amount: $<%= @category.transaction_entries.sum(:amount)  %></p>
   </div>
 </div>
