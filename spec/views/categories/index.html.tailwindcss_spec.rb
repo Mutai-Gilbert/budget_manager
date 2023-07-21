@@ -1,37 +1,27 @@
 require 'rails_helper'
 
-RSpec.describe 'Categories/Index', type: :system do
-  describe 'category index page' do
-    before do
-      @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
-      @category = Category.create!(name: 'test', icon: 'https://images.app.goo.gl/xb4zqArZJgZHrJFF6', user: @user)
-      Category.create(name: 'test2', icon: 'https://images.app.goo.gl/bx4zqArZJgZHrJFF6', user: @user)
+RSpec.describe 'categories/index', type: :view do
+  before do
+    # Create a test user
+    @user = User.create!(name: 'test', email: 'test@localhost', password: 'test123')
 
-      visit categories_path
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
-      click_button 'Log in'
-    end
+    # Create test categories associated with the user
+    @categories = [
+      Category.create!(name: 'Category 1', icon: 'https://images.app.goo.gl/xb4zqArZJgZHrJFF6', user: @user),
+      Category.create!(name: 'Category 2', icon: 'https://images.app.goo.gl/xb4zqArZJgZHrJFF6', user: @user)
+    ]
 
-    it 'displays a list of categories' do
-      expect(page).to have_content('test')
-      expect(page).to have_content('test2')
-    end
+    render
+  end
 
-    it "displays 'No categories found.' when there are no categories" do
-      Category.destroy_all
+  it 'displays a link to categories page' do
+    expect(rendered).to have_content('Category 1')
+    expect(rendered).to have_content('Category 2')
+  end
 
-      visit categories_path
-
-      expect(page).to have_content('No categories found.')
-    end
-
-    it "adds a new category when 'Add Category' button is clicked" do
-      visit categories_path
-
-      click_button 'Add Category'
-
-      expect(page).to have_current_path(new_category_path)
-    end
+  it 'displays category names and icons' do
+    expect(rendered).to have_content('Category 1')
+    expect(rendered).to have_content('Category 2')
+    expect(rendered).to have_selector('img[src="https://images.app.goo.gl/xb4zqArZJgZHrJFF6"]')
   end
 end

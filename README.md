@@ -20,6 +20,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Precompile Assets](#precompile-assets)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
   - [👥 Authors ](#-authors-)
@@ -70,13 +71,13 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo]()
+- [Live Demo](https://budget-manager-web-service.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📺 Presentation <a name="presentation"></a>
 
-- [Link to video presentation]())
+- [Link to video presentation](https://www.loom.com/share/aac682fa335249e28873f11b49e49b03?sid=961e988c-e2bd-4dac-b7be-f100f90c5300)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,6 +123,15 @@ To run the project, execute the following command:
   rails s
 ```
 
+### Precompile Assets
+In order to precompile all the assets before using them kindly use:
+
+```sh
+  rake assets:precompile
+```
+
+
+
 ### Run tests
 
 To run tests, run the following command:
@@ -129,10 +139,17 @@ To run tests, run the following command:
 ```sh
   bin/rails rspec spec
 ```
+Alternatively you can use;
+
+```sh
+  bundle exec rspec spec
+```
 
 ### Deployment
 
 You can deploy this project using:
+
+Render
 
 <!--
 Example:
