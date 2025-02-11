@@ -1,0 +1,78 @@
+# Initialize the workbook and styles
+wb = xlsx_package.workbook
+
+# Style Definitions
+header_style = wb.styles.add_style(
+  bg_color: "333333",
+  fg_color: "FFFFFF",
+  b: true,
+  alignment: { horizontal: :center }
+)
+
+total_style = wb.styles.add_style(
+  bg_color: "E0E0E0",
+  b: true
+)
+
+currency_style = wb.styles.add_style(
+  num_fmt: 44  # Currency format
+)
+
+# Summary Sheet
+wb.add_worksheet(name: "Budget Summary") do |sheet|
+  # Title row
+  sheet.add_row ["Budget Report", nil, nil, Date.today.strftime("%B %Y")], style: header_style
+  sheet.add_row [] # Empty row for spacing
+  
+  # Headers
+  sheet.add_row ["Category", "Monthly Total", "One-time Total", "Total Spent"], style: header_style
+
+  # Data rows
+  @categories.each do |category|
+    monthly_sum = category.transaction_entries.monthly.sum(:amount) || 0
+    one_time_sum = category.transaction_entries.one_time.sum(:amount) || 0
+    total = monthly_sum + one_time_sum
+
+    sheet.add_row [
+      category.name,
+      monthly_sum,
+      one_time_sum,
+      total
+    ], style: [nil, currency_style, currency_style, currency_style]
+  end
+
+  # Totals row
+  sheet.add_row [
+    "Total",
+    @monthly_transactions.sum(:amount) || 0,
+    @one_time_transactions.sum(:amount) || 0,
+    @total_budget || 0
+  ], style: [total_style, currency_style, currency_style, currency_style]
+end
+
+# Detailed Transactions Sheet
+wb.add_worksheet(name: "Transaction Details") do |sheet|
+  # Headers
+  sheet.add_row ["Date", "Category", "Description", "Amount", "Type"], style: header_style
+
+  # Data rows
+  @categories.each do |category|
+    category.transaction_entries.order(date: :desc).each do |entry|
+      sheet.add_row [
+        entry.date,
+        category.name,
+        entry.name,
+        entry.amount,
+        entry.recurring
+      ], style: [nil, nil, nil, currency_style, nil]
+    end
+  end
+
+  # Set column widths
+  sheet.column_widths 15, 20, 30, 15, 15
+end
+
+# Apply auto-filter to both sheets
+wb.worksheets.each do |sheet|
+  sheet.auto_filter = "A1:E1"
+end 

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :ensure_default_categories, only: [:index]
+
   def index
     @categories = current_user.categories
   end
@@ -23,7 +25,41 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def create_defaults
+    default_categories = [
+      { name: 'Housing', icon: 'house' },
+      { name: 'Savings', icon: 'savings' },
+      { name: 'Transportation', icon: 'car' },
+      { name: 'Food', icon: 'food' },
+      { name: 'Utilities', icon: 'utility' },
+      { name: 'Others', icon: 'misc' }
+    ]
+
+    default_categories.each do |category|
+      current_user.categories.find_or_create_by(name: category[:name]) do |c|
+        c.icon = category[:icon]
+      end
+    end
+  end
+
   private
+
+  def ensure_default_categories
+    default_categories = [
+      { name: 'Housing', icon: 'house' },
+      { name: 'Savings', icon: 'savings' },
+      { name: 'Transportation', icon: 'car' },
+      { name: 'Food', icon: 'food' },
+      { name: 'Utilities', icon: 'utility' },
+      { name: 'Others', icon: 'misc' }
+    ]
+
+    default_categories.each do |category|
+      current_user.categories.find_or_create_by(name: category[:name]) do |c|
+        c.icon = category[:icon]
+      end
+    end
+  end
 
   def category_params
     params.require(:category).permit(:name, :icon)

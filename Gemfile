@@ -73,4 +73,11 @@ group :test do
 end
 gem 'devise'
 gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'tailwindcss-rails', '~> 2.0'
+gem 'tailwindcss-rails'
+gem 'chartkick'
+gem 'groupdate'
+
+# For Excel file generation
+gem 'caxlsx'
+gem 'caxlsx_rails'
+gem 'rubyzip', '>= 1.2.1'

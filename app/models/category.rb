@@ -1,8 +1,8 @@
 class Category < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :transaction_entries
-  has_one_attached :icons
+  has_many :transaction_entries
 
   validates :name, presence: true
-  validates :icon, presence: true
+  # Remove icon validation if you don't have the column yet
+  # validates :icon, presence: true
 end

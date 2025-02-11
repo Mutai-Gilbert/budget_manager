@@ -8,9 +8,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |resource|
+      if resource.persisted?
+        sign_out(resource)
+        flash[:notice] = "Successfully registered! Please log in to continue."
+        redirect_to new_user_session_path and return
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -57,4 +63,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  after_action :create_default_categories, only: [:create]
+
+  private
+
+  def create_default_categories
+    return unless resource.persisted?
+
+    default_categories = [
+      { name: 'Housing', icon: 'house' },
+      { name: 'Savings', icon: 'savings' },
+      { name: 'Transportation', icon: 'car' },
+      { name: 'Food', icon: 'food' },
+      { name: 'Utilities', icon: 'utility' },
+      { name: 'Others', icon: 'misc' }
+    ]
+
+    default_categories.each do |category|
+      resource.categories.find_or_create_by(name: category[:name]) do |c|
+        c.icon = category[:icon]
+      end
+    end
+  end
 end

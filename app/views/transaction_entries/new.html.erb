@@ -1,27 +1,66 @@
-<div class="mx-auto px-4 flex flex-col items-center justify-center align-items-center">
-  <% content_for :page_name, "New Transaction Entry" %>
-  <% content_for :nav_button do %>
-    <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
-  <% end %>
-
-  <%= form_with model: ([@category, @transaction_entry]) do |form| %>
-    <div class="justify-center mt-5 space-y-4">
-      <div>
-        <%= form.label :name, class: "block font-bold" %>
-        <%= form.text_field :name, class: "block w-full rounded-md border-gray-300 px-3 py-2" %>
+<div class="min-h-screen bg-gradient-to-br from-[#f8e5d5] to-[#ffd4b8] flex items-center justify-center">
+  <div class="max-w-lg w-full bg-gradient-to-b from-gray-900 to-gray-800 rounded-3xl shadow-2xl p-8 text-white">
+    <!-- Header with Home Icon and Category Name -->
+    <div class="flex items-center gap-3 mb-8">
+      <div class="w-6 h-6 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+        </svg>
       </div>
-
-      <div>
-        <%= form.label :amount, class: "block font-bold" %>
-        <%= form.text_field :amount, class: "block w-full rounded-md border-gray-300 px-3 py-2" %>
-      </div>
-      <% if @transaction_entry.errors.has_key?(:amount) %>
-        <p class="text-red-500"><%= @transaction_entry.errors[:amount].first %></p>
-      <% end %>
-
-      <div>
-        <%= form.submit "Create", class: "bg-blue-500 text-white font-bold px-4 py-2 rounded-md" %>
-      </div>
+      <h2 class="text-xl font-bold text-white"><%= @category.name %></h2>
     </div>
-  <% end %>
+
+    <%= form_with(model: [@category, @transaction_entry], class: "space-y-6", local: true) do |f| %>
+      <!-- Description Field -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-300">Description</label>
+        <%= f.text_field :name, 
+            class: "w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500", 
+            placeholder: "Rent payments" %>
+      </div>
+
+      <!-- Amount Field -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-300">Amount</label>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+          <%= f.number_field :amount, 
+              step: "0.01", 
+              class: "w-full pl-7 pr-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500", 
+              placeholder: "0.0" %>
+        </div>
+      </div>
+
+      <!-- Date Field -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-300">Date</label>
+        <%= f.date_field :date, 
+            class: "w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white" %>
+      </div>
+
+      <!-- Recurring Options -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-300">Recurring</label>
+        <div class="flex gap-4">
+          <label class="inline-flex items-center">
+            <%= f.radio_button :recurring, 'one_time', class: "form-radio text-blue-500 focus:ring-blue-500 bg-gray-800 border-gray-600" %>
+            <span class="ml-2 text-sm text-gray-300">One-time</span>
+          </label>
+          <label class="inline-flex items-center">
+            <%= f.radio_button :recurring, 'monthly', class: "form-radio text-blue-500 focus:ring-blue-500 bg-gray-800 border-gray-600" %>
+            <span class="ml-2 text-sm text-gray-300">Monthly</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-between items-center pt-4">
+        <%= link_to 'Cancel', categories_path, 
+            class: "text-gray-400 text-sm hover:text-gray-300" %>
+        <%= f.submit "Save", 
+            class: "px-8 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
+            data: { turbo: false } %>
+      </div>
+    <% end %>
+  </div>
 </div>
