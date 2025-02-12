@@ -10,6 +10,7 @@
 
 - [📗 Table of Contents](#-table-of-contents)
 - [📖 Budget Manager ](#-budget-manager-)
+  - [Description](#description)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -37,6 +38,10 @@
 
 **Budget Manager** is a web app that helps users categorize and manage their transactions for easy expense tracking. Stay organized and gain insights into your spending habits with this user-friendly tool.
 
+## Description
+
+Budget Manager is a web application built with Ruby on Rails that helps users manage their finances by tracking income and expenses. Users can categorize their transactions and generate reports.
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -61,9 +66,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **User Authentication**
-- **Item Categories**
-- **Entity Transactions**
+- **User Authentication**: Secure user registration and login.
+- **Item Categories**: Organize transactions into categories.
+- **Entity Transactions**: Track income and expenses.
+- **Reports**: Generate financial reports.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
