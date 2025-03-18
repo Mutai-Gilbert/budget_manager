@@ -1,52 +1,14 @@
-<div align="center">
-
-  <h3><b>Budget Manager</b></h3>
-
-</div>
-
-<!-- TABLE OF CONTENTS -->
-
-# 📗 Table of Contents
-
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 Budget Manager ](#-budget-manager-)
-  - [Description](#description)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-    - [Key Features ](#key-features-)
-  - [🚀 Live Demo ](#-live-demo-)
-  - [📺 Presentation ](#-presentation-)
-  - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Install](#install)
-    - [Usage](#usage)
-    - [Precompile Assets](#precompile-assets)
-    - [Run tests](#run-tests)
-    - [Deployment](#deployment)
-  - [👥 Authors ](#-authors-)
-  - [🔭 Future Features ](#-future-features-)
-  - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [❓ FAQ ](#-faq-)
-  - [📝 License ](#-license-)
-
-<!-- PROJECT DESCRIPTION -->
-
-# 📖 Budget Manager <a name="about-project"></a>
-
-**Budget Manager** is a web app that helps users categorize and manage their transactions for easy expense tracking. Stay organized and gain insights into your spending habits with this user-friendly tool.
+**Budget Manager** is a user-friendly web application designed to help you effortlessly track, categorize, and manage your financial transactions. Gain clear insights into your spending habits and stay organized with this intuitive tool.
 
 ## Description
 
-Budget Manager is a web application built with Ruby on Rails that helps users manage their finances by tracking income and expenses. Users can categorize their transactions and generate reports.
+Budget Manager is a web application meticulously crafted with Ruby on Rails to empower users in managing their finances effectively. By allowing you to track both income and expenses and categorize transactions, the application provides the foundation for generating insightful financial reports.
 
-## 🛠 Built With <a name="built-with"></a>
+## 🛠️ Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> [Ruby on Rails](https://guides.rubyonrails.org/) (simplify as Rails) is a server-side web application framework written in Ruby under the MIT License. Rails is a model–view–controller (MVC) framework, providing default structures for a database, a web service, and web pages. It encourages and facilitates the use of web standards such as JSON or XML for data transfer and HTML, CSS and JavaScript for user interfacing.
+> The application is built using the robust and developer-friendly [Ruby on Rails](https://guides.rubyonrails.org/), a powerful server-side web application framework written in Ruby under the MIT License. Following the Model-View-Controller (MVC) architectural pattern, Rails provides a structured approach to building web applications, offering default structures for database interaction, web services, and user interfaces. It strongly encourages the adoption of web standards such as JSON or XML for data exchange and HTML, CSS, and JavaScript for creating engaging user experiences.
 
 <details>
   <summary>Server</summary>
@@ -62,173 +24,81 @@ Budget Manager is a web application built with Ruby on Rails that helps users ma
   </ul>
 </details>
 
-<!-- Features -->
-
 ### Key Features <a name="key-features"></a>
 
-- **User Authentication**: Secure user registration and login.
-- **Item Categories**: Organize transactions into categories.
-- **Entity Transactions**: Track income and expenses.
-- **Reports**: Generate financial reports.
+- **Secure User Authentication**: Robust registration and login system to protect your financial data.
+- **Intuitive Category Management**: Easily organize your transactions into customizable categories.
+- **Comprehensive Transaction Tracking**: Effortlessly record both income and expenses with detailed information.
+- **Insightful Financial Reports**: Generate clear and concise reports to understand your spending patterns.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
+<p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
+Experience the Budget Manager live:
+
 - [Live Demo](https://budget-manager-web-service.onrender.com/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
-## 📺 Presentation <a name="presentation"></a>
+## 📺 Video Presentation <a name="video-presentation"></a>
 
-- [Link to video presentation](https://www.loom.com/share/aac682fa335249e28873f11b49e49b03?sid=961e988c-e2bd-4dac-b7be-f100f90c5300)
+Watch a brief overview and demonstration of the Budget Manager:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- [Link to Video Presentation](https://www.loom.com/share/aac682fa335249e28873f11b49e49b03?sid=961e988c-e2bd-4dac-b7be-f100f90c5300)
 
-<!-- GETTING STARTED -->
+<p align="right">(<a href="#readme-top">Back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To get a local copy up and running, follow these steps.
+Follow these simple steps to get a local copy of the Budget Manager up and running on your machine.
 
 ### Prerequisites
 
-In order to run this project you need:
+Ensure you have the following installed on your system:
 
-- [Ruby and Rails on you operating system eg. for Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-20-04)
-- [Node.js](https://nodejs.dev/en/) installed
-- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)
-- [PostgreSQL](https://www.postgresql.org/) database installed
+- **Ruby and Rails**: Follow the installation guide for your operating system (e.g., [Ubuntu 20.04 Guide](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-20-04)).
+- **Node.js**: Download and install from [nodejs.dev](https://nodejs.dev/en/).
+- **Yarn**: Install using the instructions on [yarnpkg.com](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable).
+- **PostgreSQL**: Install and set up a PostgreSQL database as per the instructions on [postgresql.org](https://www.postgresql.org/).
 
 ### Setup
 
-Clone this repository to your desired folder:
+1.  Clone the repository to your desired location:
 
-```sh
-  cd my-folder
-  git@github.com:Mutai-Gilbert/budget_manager.git
-```
+    ```sh
+    cd your-preferred-directory
+    git clone git@github.com:Mutai-Gilbert/budget_manager.git
+    ```
 
-### Install
+2.  Navigate to the project directory:
 
-Install this project with:
+    ```sh
+    cd budget_manager
+    ```
 
-```sh
-  cd rails_capstone_project
+### Installation
 
-  bundle install
-```
+1.  Install the required Ruby gems:
+
+    ```sh
+    bundle install
+    ```
 
 ### Usage
 
-To run the project, execute the following command:
+To start the Budget Manager application locally, run the Rails server:
 
 ```sh
-  rails s
+rails s
 ```
 
-### Precompile Assets
-In order to precompile all the assets before using them kindly use:
+## Mock Testing Credentials
 
-```sh
-  rake assets:precompile
-```
+For development and testing purposes, use these credentials:
 
+Email: test@example.com
+Password: password123
 
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
-  bin/rails rspec spec
-```
-Alternatively you can use;
-
-```sh
-  bundle exec rspec spec
-```
-
-### Deployment
-
-You can deploy this project using:
-
-Render
-
-<!--
-Example:
-
-```sh
-
-```
- -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- AUTHORS -->
-
-## 👥 Authors <a name="authors"></a>
-
-👤 **Gilbert Mutai**
-
-- GitHub: [@Mutai-Gilbert](https://github.com/Mutai-Gilbert/budget_manager.git)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
-
-## 🔭 Future Features <a name="future-features"></a>
-
-- [x] API authentication
-- [x] API Authorization
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝 Contributing <a name="contributing"></a>
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/Mutai-Gilbert/budget_manager.git).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- SUPPORT -->
-
-## ⭐️ Show your support <a name="support"></a>
-
-If you like this project, kindly give me a ⭐️
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-- I would like to thank [Microverse](https://www.microverse.org/) and [Gregoire Vella](https://www.behance.net/gregoirevella) for design.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ <a name="faq"></a>
-
-- **Is Rails still relevant?**
-
-  - [Yes, Rails is still popular among developer](https://blog.railwaymen.org/is-ruby-on-rails-dead)
-
-- **Is it easy to learn Ruby on Rails**
-
-  - [It is very easy to learn compared to most of the programming languages](https://careerkarma.com/blog/why-learn-ruby-on-rails/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📝 License <a name="license"></a>
-
-This project is [MIT](./LICENSE) licensed.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+**Note:** These credentials only work in development and test environments.
+</rewritten_file>

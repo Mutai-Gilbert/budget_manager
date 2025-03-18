@@ -51,4 +51,6 @@ module ApplicationHelper
       </svg>'.html_safe
     end
   end
+
+  # Common helper methods can go here
 end
