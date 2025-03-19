@@ -2,7 +2,8 @@ if Rails.env.development? || Rails.env.test?
   module MockAuthentication
     MOCK_USER = {
       email: 'test@example.com',
-      password: 'password123'
+      password: 'password123',
+      name: 'Test User'
     }
 
     def authenticate_mock_user(email, password)
@@ -11,6 +12,7 @@ if Rails.env.development? || Rails.env.test?
       User.find_or_create_by!(
         email: MOCK_USER[:email]
       ) do |user|
+        user.name = MOCK_USER[:name]
         user.password = MOCK_USER[:password]
         user.password_confirmation = MOCK_USER[:password]
       end

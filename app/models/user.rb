@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :transaction_entries, foreign_key: :user_id
 
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+
+  # Add any other necessary validations
 end

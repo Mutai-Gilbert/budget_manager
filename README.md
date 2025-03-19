@@ -101,4 +101,3 @@ Email: test@example.com
 Password: password123
 
 **Note:** These credentials only work in development and test environments.
-</rewritten_file>

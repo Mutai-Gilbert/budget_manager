@@ -1,4 +1,5 @@
 class TransactionEntriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category
 
   def index
@@ -13,10 +14,22 @@ class TransactionEntriesController < ApplicationController
     @transaction_entry = @category.transaction_entries.build(transaction_entry_params)
     @transaction_entry.user = current_user
 
-    if @transaction_entry.save
-      redirect_to categories_path, notice: 'Transaction was successfully added.'
-    else
-      render :new
+    respond_to do |format|
+      if @transaction_entry.save
+        format.html { redirect_to categories_path, notice: 'Transaction was successfully created.' }
+        format.json { render json: { success: true, message: 'Transaction saved' }, status: :created }
+        format.turbo_stream { 
+          render turbo_stream: turbo_stream.replace(
+            'new_transaction_form',
+            partial: 'categories/category',
+            locals: { category: @category }
+          )
+        }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @transaction_entry.errors, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
