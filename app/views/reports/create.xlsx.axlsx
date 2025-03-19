@@ -1,0 +1,82 @@
+# Initialize the workbook and styles
+wb = xlsx_package.workbook
+
+# Style Definitions
+header_style = wb.styles.add_style(
+  bg_color: "333333",
+  fg_color: "FFFFFF",
+  b: true,
+  alignment: { horizontal: :center }
+)
+
+total_style = wb.styles.add_style(
+  bg_color: "E0E0E0",
+  b: true
+)
+
+currency_style = wb.styles.add_style(
+  num_fmt: 44
+)
+
+# Budget Summary Sheet
+wb.add_worksheet(name: "Budget Summary") do |sheet|
+  # Title
+  sheet.add_row ["Budget Report - #{Date.today.strftime('%B %Y')}"], style: header_style
+  sheet.add_row []
+
+  # Headers
+  sheet.add_row ["Category", "Monthly Total", "One-time Total", "Total"], style: header_style
+
+  # Category Data
+  @categories.each do |category|
+    monthly_sum = category.transaction_entries.monthly.sum(:amount)
+    one_time_sum = category.transaction_entries.one_time.sum(:amount)
+    total = monthly_sum + one_time_sum
+
+    sheet.add_row [
+      category.name,
+      monthly_sum,
+      one_time_sum,
+      total
+    ], style: [nil, currency_style, currency_style, currency_style]
+  end
+
+  # Totals
+  sheet.add_row [
+    "Total",
+    @monthly_transactions.sum(:amount),
+    @one_time_transactions.sum(:amount),
+    @total_budget
+  ], style: [total_style, currency_style, currency_style, currency_style]
+
+  # Formatting
+  sheet.column_widths 20, 15, 15, 15
+
+  # Apply auto-filter to this sheet's specific columns
+  sheet.auto_filter = "A3:D3"  # Apply to header row of data
+end
+
+# Transaction Details Sheet
+wb.add_worksheet(name: "Transaction Details") do |sheet|
+  # Headers
+  sheet.add_row ["Date", "Category", "Description", "Amount", "Type"], style: header_style
+
+  # Transactions
+  @categories.each do |category|
+    category.transaction_entries.order(date: :desc).each do |entry|
+      sheet.add_row [
+        entry.date,
+        category.name,
+        entry.name,
+        entry.amount,
+        entry.recurring
+      ], style: [nil, nil, nil, currency_style, nil]
+    end
+  end
+
+  # Formatting
+  sheet.column_widths 15, 20, 30, 15, 15
+
+  # Apply auto-filter to this sheet's specific columns
+  sheet.auto_filter = "A1:E1"  # Apply to header row
+end 

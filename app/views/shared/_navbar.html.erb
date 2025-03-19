@@ -1,0 +1,35 @@
+<% unless content_for?(:nav_bar) %>
+  <nav class="bg-blue-600 p-4 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <% if content_for?(:page_name) %>
+        <%= link_to yield(:back_path), class: "text-white hover:text-gray-300" do %>
+          <div>
+            <%= link_to '<--', categories_path, class: "text-white hover:text-gray-300 grid font-bold px-4" %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if content_for?(:nav_button) %>
+        <%= yield(:nav_button) %>
+      <% end %>
+    </div>
+    <div>
+      <% if content_for?(:nav_button) %>
+        <ul class="flex justify-center font-bold">
+          <li class="nav-item">
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+<% end %>
+<nav class="bg-white shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex">
+        <div class="flex-shrink-0 flex items-center">
+          <h1 class="text-xl font-bold">Budget Manager</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

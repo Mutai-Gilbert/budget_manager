@@ -1,0 +1,76 @@
+<div class="min-h-screen bg-[#fbe6d4] flex items-center justify-center">
+  <div class="max-w-lg w-full bg-gradient-to-b from-gray-900 to-gray-800 rounded-3xl shadow-2xl p-8" 
+       id="new_transaction_form">
+    <!-- Header -->
+    <div class="flex items-center gap-3 mb-8">
+      <div class="w-6 h-6 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+        </svg>
+      </div>
+      <h2 class="text-xl font-bold text-white"><%= @category.name %></h2>
+    </div>
+
+    <%= form_with(model: [@category, @transaction_entry], 
+                  local: true,
+                  data: { 
+                    controller: "transaction",
+                    action: "transaction#submit"
+                  }) do |f| %>
+      <div class="space-y-4">
+        <%= f.text_field :name,
+            placeholder: "Description",
+            required: true,
+            class: "w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 
+                    text-gray-100 placeholder-gray-500 focus:border-blue-500 
+                    focus:ring-2 focus:ring-blue-500 focus:outline-none 
+                    shadow-inner transition duration-200" %>
+
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+          <%= f.number_field :amount,
+              step: "0.01",
+              required: true,
+              placeholder: "0.00",
+              class: "w-full pl-7 pr-3 py-3 rounded-xl bg-gray-800 border border-gray-600 
+                      text-gray-100 placeholder-gray-500 focus:border-blue-500 
+                      focus:ring-2 focus:ring-blue-500 focus:outline-none 
+                      shadow-inner transition duration-200" %>
+        </div>
+
+        <%= f.date_field :date,
+            required: true,
+            class: "w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-600 
+                    text-gray-100 focus:border-blue-500 focus:ring-2 
+                    focus:ring-blue-500 focus:outline-none shadow-inner 
+                    transition duration-200" %>
+
+        <div class="space-y-2">
+          <div class="flex gap-4">
+            <label class="inline-flex items-center">
+              <%= f.radio_button :recurring, 'one_time', 
+                  class: "form-radio text-blue-500 focus:ring-blue-500 
+                          bg-gray-800 border-gray-600" %>
+              <span class="ml-2 text-sm text-gray-300">One-time</span>
+            </label>
+            <label class="inline-flex items-center">
+              <%= f.radio_button :recurring, 'monthly', 
+                  class: "form-radio text-blue-500 focus:ring-blue-500 
+                          bg-gray-800 border-gray-600" %>
+              <span class="ml-2 text-sm text-gray-300">Monthly</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 flex justify-between items-center">
+        <%= link_to 'Cancel', categories_path, 
+            class: "text-gray-400 hover:text-gray-300" %>
+        <%= f.submit "Save",
+            class: "px-8 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg 
+                   hover:bg-blue-700 focus:outline-none focus:ring-2 
+                   focus:ring-offset-2 focus:ring-blue-500" %>
+      </div>
+    <% end %>
+  </div>
+</div>

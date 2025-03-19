@@ -1,0 +1,48 @@
+<div class="min-h-screen bg-[#fbe6d4]">
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">Monthly Budget</h1>
+      
+      <%= link_to download_report_path(format: :xlsx),
+          class: "inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200",
+          data: { 
+            controller: "download",
+            action: "download#start",
+            turbo: false 
+          } do %>
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Download Report
+      <% end %>
+    </div>
+
+    <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6">
+      <% @categories.each do |category| %>
+        <%= link_to new_category_transaction_entry_path(category), class: "flex items-center p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-200" do %>
+          <div class="w-12 h-12 flex items-center justify-center #{category_color_class(category.name)} rounded-full mr-4">
+            <%= category_icon(category.name) %>
+          </div>
+          <div>
+            <h2 class="text-xl font-semibold text-gray-800"><%= category.name %></h2>
+            <p class="text-sm text-gray-500"><%= category_description(category.name) %></p>
+            <p class="text-sm font-semibold text-teal-600 mt-1">
+              Total: $<%= category.transaction_entries.sum(:amount) %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Add New Category Button -->
+    <%= link_to new_category_path, class: "mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" do %>
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+      </svg>
+      Add New Category
+    <% end %>
+  </div>
+</div>
+
+<!-- Helper method for category icons -->
+<%# Add this to app/helpers/application_helper.rb %>
