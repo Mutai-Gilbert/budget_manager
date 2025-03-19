@@ -1,11 +1,30 @@
 [build]
-  command = "yarn build && bundle exec rails assets:precompile"
-  publish = "public"
+  command = "bundle install && bundle exec rake netlify:prepare"
+  publish = "netlify_build"
+  environment = { NODE_VERSION = "16", RUBY_VERSION = "3.1.2" }
 
-[context.production]
-  environment = { NODE_VERSION = "16.x", RUBY_VERSION = "3.2.0" }
+[context.production.environment]
+  RAILS_ENV = "production"
+  API_URL = "https://your-backend-api.com"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-api.com/api/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200 
+  status = 200
+
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.images]
+  compress = true 

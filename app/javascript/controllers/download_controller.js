@@ -1,13 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
+import { apiConfig } from "../config/api"
 
 export default class extends Controller {
   start(event) {
     event.preventDefault()
     
-    const downloadUrl = event.currentTarget.href
+    const downloadUrl = `${apiConfig.baseURL}${event.currentTarget.getAttribute('href')}`
     
     fetch(downloadUrl, {
       headers: {
+        ...apiConfig.headers,
         'Accept': 'application/xlsx'
       }
     })
